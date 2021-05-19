@@ -13,7 +13,12 @@ exports.signIn = (req, res) => {
 exports.index = async (req, res) => {
     try {
         const user = await User.findById(req.session.user._id)
-        const posts = await Post.find({ author: { $in: user.following } }).sort({ addedDate: 'desc' }).populate('author').populate('likes')
+        
+        const posts = await Post.find({ author: { $in: user.following } })
+                                .sort({ addedDate: 'desc' })
+                                .populate('author')
+                                .populate('likes');
+        
         res.render('index', { posts, user });
     } catch(err) {
         console.log(err);
