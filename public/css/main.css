@@ -1,0 +1,153 @@
+/* * {
+    overflow-x: hidden;
+} */
+
+.logo {
+    width: 32px;
+    margin-right: 10px;
+}
+
+body {
+    background-color: #f4f4f4;
+}
+
+.sign-in-link {
+    margin-left: 1rem;
+}
+
+.search-user-container {
+    width: 500px;
+    padding: 0 0 0 20px;
+    margin: 0 auto;
+}
+
+.search-user-container img, 
+.search-user-container .profile-info {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.profile-info-container {
+    width: 320px;
+    margin: 4rem auto 0 auto;
+    padding: 0;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.profile-info {
+    margin-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.profile-info p {
+    margin: 0;
+}
+
+.avatar, .search-avatar {
+    border-radius: 50%;
+    width: 5rem;
+    height: 5rem;
+}
+
+.avatar:hover {
+    opacity: .8;
+    cursor: pointer;
+}
+
+#avatar-change-form {
+    display: none;
+}
+
+.post-avatar {
+    display: inline-block;
+    border-radius: 50%;
+    width: 3.6rem;
+    height: 3.6rem;
+    margin-right: 1rem;
+}
+/* START--overwritten bootstrap card styles--START */
+.card-title {
+    display: inline-block;
+}
+
+.card-text {
+    margin-top: 1rem;
+}
+/* END--overwritten bootstrap card styles--END */
+
+.delete-post-card img {
+    height: 14rem;
+    object-fit: contain;
+    background-color: #ddd;
+}
+
+.delete-post-card .no-photo {
+    object-fit: contain;
+    background-color: #fff;
+}
+
+.delete-post-card video {
+    height: 14rem;
+    object-fit: contain;
+    background-color: #ddd;
+}
+
+video {
+    outline: none;
+}
+
+.follow-status {
+    vertical-align: middle;
+}
+
+.follow-icon {
+    display: inline-block;
+}
+
+.follow-icon:hover {
+    opacity: .9;
+    cursor: pointer;
+}
+
+/* .greeting {
+    transition: opacity 4s ease-in-out;
+} */
+
+.like {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.like:hover {
+    transform: scale(1.1);
+}
+
+.tooltip-inner {
+    background-color:rgb(248, 248, 248);
+    color: black;
+}
+
+.tooltip-arrow {
+    display: none !important;
+}
+
+@media(min-width: 576px) {
+    
+    .avatar, .search-avatar {
+        width: 7rem;
+        height: 7rem;
+    }
+
+    .profile-info p {
+        font-size: 1.2rem;
+        margin-left: 2rem;
+    }
+
+    .follow-icon {
+        margin-left: 30px;
+    }
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuń post</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous" defer></script>
+    <script src="/js/nav-active.js" defer></script>
+</head>
+<body>
+    <%- include('includes/navbar') %>
+    <div class="container">
+        <% if(posts.length > 0) { %>
+            <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 mt-4">
+                <% posts.forEach(post => { %>
+                    <div class="col">
+                        <div class="card delete-post-card">
+                            <% if(post.imageURI) { %>
+                                <% if(post.imageURI && (post.imageURI.includes('jpg') || post.imageURI.includes('png') || post.imageURI.includes('jpeg'))) { %><img src="/post-images/<%= post.imageURI %>" class="card-img-top"><% } %>
+                                <% if(post.imageURI && post.imageURI.includes('mp4')) { %><video><source src="/post-images/<%= post.imageURI %>" class="card-img-top" ></video><% } %>
+                            <% } else { %>
+                                <img src="/images/no-photo.jpg" class="card-img-top no-photo">
+                            <% } %>
+                            <div class="card-body">
+                                <!-- <h5 class="card-title">Usuń posta</h5> -->
+                                <form action="/delete-post" method="post">
+                                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                    <input type="hidden" name="delete-post" value="<%= post._id %>">
+                                    <button class="btn btn-dark" type="submit">Usuń posta</button>
+                                </form>
+                                <p class="card-text"><%= post.textContent.substring(0, 34) %>...</p>
+                            </div>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        <% } else { %>
+            <div class="row">
+                <h3 class="col-6 offset-3 text-center mt-4">Brak postów do usunięcia</h3>
+            </div>
+        <% } %>
+    </div>
+</body>
+</html>
